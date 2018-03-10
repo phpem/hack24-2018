@@ -16,7 +16,7 @@ class FirebaseClient implements Client
      * @var PhpFirebaseCloudMessagingClient
      */
     private $client;
-    
+
     public function __construct(PhpFirebaseCloudMessagingClient $client)
     {
         $this->client = $client;
