@@ -2,6 +2,10 @@ transaction.webhook:
     path: /webhook/transaction
     controller: App\Controller\Webhook\StarlingController
     methods: [POST]
+
+oauth.redirect:
+    path: /auth
+    controller: App\Controller\AuthController
 index:
     path: /
     controller: App\Controller\HomeController

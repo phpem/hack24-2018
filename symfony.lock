@@ -8,6 +8,9 @@
     "guzzlehttp/psr7": {
         "version": "1.4.2"
     },
+    "moneymeg/starling-php-sdk": {
+        "version": "1.0"
+    },
     "myclabs/deep-copy": {
         "version": "1.7.0"
     },

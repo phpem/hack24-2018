@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c31f53b0225a21829fa65c3c3c9b4c9",
+    "content-hash": "ff5b7583ac9b66d14f916d97b18aa16b",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1154,6 +1154,36 @@
                 "sql"
             ],
             "time": "2014-01-12T16:20:24+00:00"
+        },
+        {
+            "name": "moneymeg/starling-php-sdk",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MoneyMeg/starling-php-sdk.git",
+                "reference": "005466c02d2112b77d411bc640b99d7b3f0f05f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MoneyMeg/starling-php-sdk/zipball/005466c02d2112b77d411bc640b99d7b3f0f05f7",
+                "reference": "005466c02d2112b77d411bc640b99d7b3f0f05f7",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "type": "composer",
+            "autoload": {
+                "psr-4": {
+                    "Starling\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "A PHP SDK for the Starling Banking API.",
+            "time": "2017-11-23T12:14:16+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5633,8 +5663,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "symfony/lts": 20,
-        "sngrl/php-firebase-cloud-messaging": 20
+        "sngrl/php-firebase-cloud-messaging": 20,
+        "symfony/lts": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
