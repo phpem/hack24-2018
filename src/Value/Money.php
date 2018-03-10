@@ -32,4 +32,9 @@ final class Money
     {
         return $this->value;
     }
+
+    public function currency(): string
+    {
+        return $this->currency;
+    }
 }

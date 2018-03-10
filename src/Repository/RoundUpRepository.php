@@ -19,16 +19,9 @@ class RoundUpRepository extends ServiceEntityRepository
         parent::__construct($registry, RoundUp::class);
     }
 
-    /*
-    public function findBySomething($value)
+    public function save(RoundUp $roundup)
     {
-        return $this->createQueryBuilder('r')
-            ->where('r.something = :value')->setParameter('value', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $this->_em->persist($roundup);
+        $this->_em->flush();
     }
-    */
 }

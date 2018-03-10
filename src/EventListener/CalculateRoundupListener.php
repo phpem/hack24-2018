@@ -3,9 +3,8 @@
 namespace App\EventListener;
 
 use App\Calculator\RoundupCalculator;
-use App\Event\RoundUpCalculatedEvent;
 use App\Event\TransactionCreatedEvent;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use App\Repository\RoundUpRepository;
 
 class CalculateRoundupListener
 {
@@ -16,22 +15,20 @@ class CalculateRoundupListener
     private $calculator;
 
     /**
-     * @var EventDispatcherInterface
+     * @var RoundUpRepository
      */
-    private $dispatcher;
+    private $repository;
 
-    public function __construct(RoundupCalculator $calculator, EventDispatcherInterface $dispatcher)
+    public function __construct(RoundupCalculator $calculator, RoundUpRepository $repository)
     {
         $this->calculator = $calculator;
-        $this->dispatcher = $dispatcher;
+        $this->repository = $repository;
     }
 
     public function onTransactionCreated(TransactionCreatedEvent $event)
     {
-        $transaction = $event->getTransaction();
+        $roundup = $this->calculator->calculate($event->getTransaction());
 
-        $roundup = $this->calculator->calculate($transaction);
-
-        $this->dispatcher->dispatch(RoundUpCalculatedEvent::NAME, new RoundUpCalculatedEvent($roundup));
+        $this->repository->save($roundup);
     }
 }
