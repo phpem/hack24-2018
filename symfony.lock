@@ -1,4 +1,16 @@
 {
+    "doctrine/data-fixtures": {
+        "version": "v1.3.0"
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "2ea6070ecf365f9a801ccaed4b31d4a3b7af5693"
+        }
+    },
     "guzzlehttp/guzzle": {
         "version": "6.3.0"
     },
@@ -154,5 +166,11 @@
     },
     "webmozart/assert": {
         "version": "1.3.0"
+    },
+    "zalas/injector": {
+        "version": "v1.0.0"
+    },
+    "zalas/phpunit-injector": {
+        "version": "v1.1.0"
     }
 }

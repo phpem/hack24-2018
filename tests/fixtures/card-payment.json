@@ -1,0 +1,41 @@
+{
+  "webhookNotificationUid": "a85436b8-c969-408b-93d3-71ed298e08ef",
+  "customerUid": "ff7cda4c-0670-4ebc-a945-a526fed124a6",
+  "webhookType": "TRANSACTION_CARD",
+  "eventUid": "193e44df-4af3-4044-af9f-b156a6d50e7d",
+  "transactionAmount": {
+    "currency": "GBP",
+    "minorUnits": 1000
+  },
+  "sourceAmount": {
+    "currency": "GBP",
+    "minorUnits": 1000
+  },
+  "direction": "PAYMENT",
+  "description": "Osprey London",
+  "merchantUid": "5ef0556e-4f3b-45e3-8997-49cd6289c2f3",
+  "merchantLocationUid": "8798c74b-7c8d-4b39-922f-e07977e64d05",
+  "status": "PENDING",
+  "transactionMethod": "CONTACTLESS",
+  "transactionTimestamp": "2018-03-10T23:07:14.510Z",
+  "merchantPosData": {
+    "posTimestamp": "23:07:14",
+    "cardLast4": "7228",
+    "authorisationCode": "185597",
+    "country": "GBR",
+    "merchantIdentifier": "OIUREUIEWYIERG7    "
+  },
+  "content": {
+    "amount": -10,
+    "sourceCurrency": "GBP",
+    "forCustomer": "£-10.00 @ Osprey London",
+    "counterParty": "Osprey London",
+    "transactionUid": "b41c2bee-ae33-4d2f-8ede-7def14684e31",
+    "type": "TRANSACTION_CARD",
+    "merchantUid": "5ef0556e-4f3b-45e3-8997-49cd6289c2f3",
+    "merchantLocationUid": "8798c74b-7c8d-4b39-922f-e07977e64d05",
+    "customerUid": "ff7cda4c-0670-4ebc-a945-a526fed124a6"
+  },
+  "timestamp": "2018-03-10T23:07:14.510Z",
+  "uid": "a85436b8-c969-408b-93d3-71ed298e08ef"
+}

@@ -20,13 +20,15 @@
         "symfony/yaml": "^4.0"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
         "phpunit/phpunit": "^7.0",
         "symfony/browser-kit": "^4.0",
         "symfony/dotenv": "^4.0",
         "symfony/maker-bundle": "^1.1",
         "symfony/phpunit-bridge": "^4.0",
         "symfony/profiler-pack": "^1.0",
-        "symfony/web-server-bundle": "^4.0"
+        "symfony/web-server-bundle": "^4.0",
+        "zalas/phpunit-injector": "^1.1"
     },
     "config": {
         "preferred-install": {
