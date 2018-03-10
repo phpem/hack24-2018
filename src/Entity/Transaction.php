@@ -35,20 +35,29 @@ class Transaction
      */
     private $transactionDate;
 
-    private function __construct(Uuid $id, Money $amount, \DateTimeImmutable $transactionDate, string $rawPayload)
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="Customer", inversedBy="transactions")
+     */
+    private $customer;
+
+    private function __construct(Uuid $id, Customer $customer, Money $amount, \DateTimeImmutable $transactionDate,
+        string $rawPayload)
     {
         $this->id = $id;
+        $this->customer = $customer;
         $this->amount = $amount;
         $this->rawPayload = $rawPayload;
         $this->transactionDate = $transactionDate;
     }
 
-    public static function fromStarling(string $payload): Transaction
+    public static function fromStarling(Customer $customer, string $payload): Transaction
     {
         $decodedPayload = json_decode($payload, true);
 
         return new self(
             new Uuid($decodedPayload['uid']),
+            $customer,
             new Money(
                 $decodedPayload['content']['sourceCurrency'],
                 $decodedPayload['content']['amount']

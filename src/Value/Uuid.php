@@ -2,7 +2,7 @@
 
 namespace App\Value;
 
-class Uuid
+final class Uuid
 {
     /**
      * @var string
