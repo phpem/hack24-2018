@@ -4,11 +4,11 @@ services:
   mysql:
     image: mysql
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "--password", "derp"]
       timeout: 2s
       retries: 10
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: derp
       MYSQL_DATABASE: symfony
       MYSQL_USER: symfony
       MYSQL_PASSWORD: symfony
