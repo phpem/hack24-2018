@@ -15,7 +15,8 @@
         "symfony/orm-pack": "^1.0",
         "symfony/twig-bundle": "^4.0",
         "symfony/webpack-encore-pack": "^1.0",
-        "symfony/yaml": "^4.0"
+        "symfony/yaml": "^4.0",
+        "sngrl/php-firebase-cloud-messaging": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0",
@@ -66,7 +67,7 @@
     "extra": {
         "symfony": {
             "id": "01C881MD1YYX58VYHPD81H6YAH",
-            "allow-contrib": false
+            "allow-contrib": true
         }
     }
 }

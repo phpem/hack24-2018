@@ -29,3 +29,17 @@ services:
     App\EventListener\CalculateRoundupListener:
         tags:
             - { name: kernel.event_listener, event: transaction.created }
+    GuzzleHttp\Client:
+            class: GuzzleHttp\Client
+
+    sngrl\PhpFirebaseCloudMessaging\Client:
+        class: sngrl\PhpFirebaseCloudMessaging\Client
+        calls:
+            - method: setApiKey
+              arguments:
+                  - '%env(FCM_SERVER_KEY)%'
+            - method: injectGuzzleHttpClient
+              arguments:
+                  - '@GuzzleHttp\Client'
+
+    App\Notifications\Client: '@App\Notifications\Client\FirebaseClient'
