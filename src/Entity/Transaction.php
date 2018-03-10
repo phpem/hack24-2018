@@ -36,7 +36,7 @@ class Transaction
     private $transactionDate;
 
     /**
-     * @var
+     * @var Customer
      * @ORM\ManyToOne(targetEntity="Customer", inversedBy="transactions")
      */
     private $customer;
@@ -80,5 +80,13 @@ class Transaction
     public function isOutgoing(): bool
     {
         return $this->amount->value() < 0;
+    }
+
+    /**
+     * @return Customer
+     */
+    public function customer(): Customer
+    {
+        return $this->customer;
     }
 }

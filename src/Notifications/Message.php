@@ -6,13 +6,13 @@ namespace App\Notifications;
 
 class Message
 {
-    protected $title;
+    protected $title = "";
 
-    protected $message;
+    protected $message = "";
 
     protected $priority;
 
-    protected $data;
+    protected $data = [];
 
     protected $recipient;
 

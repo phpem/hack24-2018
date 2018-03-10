@@ -45,4 +45,20 @@ class RoundUp
 
         return new self(new Money($currency, $value), $transaction);
     }
+
+    /**
+     * @return Transaction
+     */
+    public function transaction(): Transaction
+    {
+        return $this->transaction;
+    }
+
+    /**
+     * @return Money
+     */
+    public function value(): Money
+    {
+        return $this->value;
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Notifications\Client;
 
 use App\Notifications\Client;
 use App\Notifications\Message;
+use Psr\Log\LoggerInterface;
 use sngrl\PhpFirebaseCloudMessaging\Client as PhpFirebaseCloudMessagingClient;
 use sngrl\PhpFirebaseCloudMessaging\Message as FirebaseMessage;
 use sngrl\PhpFirebaseCloudMessaging\Notification;
@@ -15,10 +16,9 @@ class FirebaseClient implements Client
      * @var PhpFirebaseCloudMessagingClient
      */
     private $client;
-
+    
     public function __construct(PhpFirebaseCloudMessagingClient $client)
     {
-
         $this->client = $client;
     }
 
@@ -27,7 +27,6 @@ class FirebaseClient implements Client
         $firebaseMessage = new FirebaseMessage();
         $firebaseMessage->setPriority($message->getPriority());
         $firebaseMessage->addRecipient(new Device($message->getRecipient()));
-        $firebaseMessage->setNotification(new Notification($message->getTitle(), $message->getMessage()));
 
         if (!is_null($message->getData())) {
             $firebaseMessage->setData($message->getData());
