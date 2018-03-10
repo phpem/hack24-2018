@@ -21,6 +21,7 @@ class AuthController extends Controller
     {
         return new JsonResponse([
             'balance' => $this->client->getBalance(),
+            'transactions' => $this->client->getCardTransactions(),
         ]);
     }
 }

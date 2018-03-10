@@ -4,6 +4,7 @@ namespace App\Client;
 
 use Starling\Api\Client;
 use Starling\Api\Request\Accounts\Balance;
+use Starling\Api\Request\Transactions\Card;
 use Starling\Identity;
 
 class StarlingClient
@@ -19,10 +20,28 @@ class StarlingClient
     public function getBalance()
     {
         $request = new Balance();
-        $result = $this->client->request($request);
-        $body = json_decode((string)$result->getBody(), true);
+        $body = $this->doRequest($request);
 
         return $body['effectiveBalance'];
+    }
+
+    public function getCardTransactions()
+    {
+        $request = new Card();
+        $body = $this->doRequest($request);
+
+        return array_map(function($transaction){
+            unset($transaction['_links']);
+            return $transaction;
+
+        }, $body['_embedded']['transactions']);
+    }
+
+    private function doRequest($request)
+    {
+        $result = $this->client->request($request);
+
+        return json_decode((string)$result->getBody(), true);
     }
 
     public static function instance(string $authToken): StarlingClient
