@@ -18,12 +18,24 @@ class WebhookControllerTest extends WebTestCase {
         $this->client = static::createClient();
     }
 
-    public function testWebHookForTransaction()
+    public function testReturnsBadRequestForInvalidPayload()
     {
-        $this->client->request('POST', '/webhook/transaction');
-        $response = $this->client->getResponse();
+        $this->client->request('POST', '/webhook/transaction', [], [], [], 'BAD CONTENT');
 
-        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
-        $this->assertEquals('', $response->getContent());
+        $this->assertStatusCode(Response::HTTP_BAD_REQUEST);
+        $this->assertEquals([], $this->getDecodedResponse());
+    }
+
+    protected function assertStatusCode(int $statusCode): void
+    {
+        $response = $this->client->getResponse();
+        $this->assertEquals($statusCode, $response->getStatusCode());
+    }
+
+    protected function getDecodedResponse(): ?array
+    {
+        $response = $this->client->getResponse()->getContent();
+
+        return json_decode($response, true);
     }
 }
