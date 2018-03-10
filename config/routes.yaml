@@ -1,6 +1,6 @@
 transaction.webhook:
     path: /webhook/transaction
-    controller: App\Controller\WebhookController::transaction
+    controller: App\Controller\Webhook\StarlingController
     methods: [POST]
 index:
     path: /

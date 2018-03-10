@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Value\Money;
 use Doctrine\ORM\Mapping as ORM;
-use Ramsey\Uuid\Uuid;
+use App\Value\Uuid;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TransactionRepository")
@@ -23,16 +23,32 @@ class Transaction
      */
     private $amount;
 
+    /**
+     * @var array
+     * @ORM\Column(type="json")
+     */
+    private $rawPayload;
 
-    private function __construct(Money $amount)
+    private function __construct(Uuid $id, Money $amount, \DateTimeImmutable $transactionDate, string $rawPayload)
     {
-        $this->id = Uuid::uuid4();
+        $this->id = $id;
         $this->amount = $amount;
+        $this->rawPayload = $rawPayload;
     }
 
-    public static function forAmount(Money $amount): Transaction
+    public static function fromStarling(string $payload): Transaction
     {
-        return new self($amount);
+        $decodedPayload = json_decode($payload, true);
+
+        return new self(
+            new Uuid($decodedPayload['uid']),
+            new Money(
+                $decodedPayload['content']['sourceCurrency'],
+                $decodedPayload['content']['amount']
+            ),
+            new \DateTimeImmutable($decodedPayload['timestamp']),
+            $payload
+        );
     }
 
     public function amount(): Money
