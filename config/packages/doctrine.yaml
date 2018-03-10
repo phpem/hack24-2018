@@ -25,3 +25,9 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+            App\Value:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Value'
+                prefix: 'App\Value'
+                alias: App
