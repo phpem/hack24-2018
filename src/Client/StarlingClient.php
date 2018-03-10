@@ -25,7 +25,7 @@ class StarlingClient
         return $body['effectiveBalance'];
     }
 
-    public function getCardTransactions()
+    public function getCardTransactions(): array
     {
         $request = new Card();
         $body = $this->doRequest($request);
