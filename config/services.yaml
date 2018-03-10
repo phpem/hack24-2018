@@ -29,6 +29,11 @@ services:
     App\EventListener\CalculateRoundupListener:
         tags:
             - { name: kernel.event_listener, event: transaction.created }
+
+    App\EventListener\SendSavedNotificationListener:
+        tags:
+            - { name: kernel.event_listener, event: roundup.calculated }
+
     GuzzleHttp\Client:
             class: GuzzleHttp\Client
 

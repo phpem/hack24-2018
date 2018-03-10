@@ -36,4 +36,12 @@ class Customer
         $this->deviceId = $deviceId;
         $this->transactions = new ArrayCollection;
     }
+
+    /**
+     * @return string
+     */
+    public function deviceId(): string
+    {
+        return $this->deviceId;
+    }
 }
