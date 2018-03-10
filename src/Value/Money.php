@@ -27,4 +27,9 @@ final class Money
         $this->value = (string) $amount;
         $this->currency = $currency;
     }
+
+    public function value(): string
+    {
+        return $this->value;
+    }
 }

@@ -29,11 +29,18 @@ class Transaction
      */
     private $rawPayload;
 
+    /**
+     * @var \DateTimeImmutable
+     * @ORM\Column(type="datetime")
+     */
+    private $transactionDate;
+
     private function __construct(Uuid $id, Money $amount, \DateTimeImmutable $transactionDate, string $rawPayload)
     {
         $this->id = $id;
         $this->amount = $amount;
         $this->rawPayload = $rawPayload;
+        $this->transactionDate = $transactionDate;
     }
 
     public static function fromStarling(string $payload): Transaction
@@ -51,8 +58,18 @@ class Transaction
         );
     }
 
+    public function id(): Uuid
+    {
+        return $this->id;
+    }
+
     public function amount(): Money
     {
         return $this->amount;
+    }
+
+    public function isOutgoing(): bool
+    {
+        return $this->amount->value() < 0;
     }
 }
