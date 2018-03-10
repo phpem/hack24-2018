@@ -6,6 +6,7 @@ use App\DataFixtures\AppFixtures;
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Doctrine\Common\DataFixtures\Loader;
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\SchemaTool;
 use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Client;
@@ -17,7 +18,10 @@ abstract class Hack24TestCase extends WebTestCase
 {
     /** @var Client */
     protected $client;
+
+    /** @var EntityManagerInterface */
     private $em;
+
     private $fixtures;
 
     public function setUp()
@@ -37,7 +41,7 @@ abstract class Hack24TestCase extends WebTestCase
         $this->loadFixtures();
     }
 
-    protected function loadFixtures()
+    protected function loadFixtures(): void
     {
         $loader = new Loader();
         $loader->addFixture(new AppFixtures());

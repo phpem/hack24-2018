@@ -16,6 +16,7 @@
         <env name="SHELL_VERBOSITY" value="-1" />
         <env name="DATABASE_URL" value="mysql://symfony:symfony@127.0.0.1:3307/symfony" />
         <env name="STARLING_ACCESS_TOKEN" value="" />
+        <env name="FCM_SERVER_KEY" value="" />
         <!-- define your env variables for the test env here -->
     </php>
 
