@@ -1,0 +1,4 @@
+index:
+    path: /webhook/transaction
+    controller: App\Controller\WebhookController::transaction
+    methods: [POST]
