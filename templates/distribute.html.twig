@@ -3,7 +3,7 @@
 {% block body %}
 <div class="container">
     <h1>Time to distribute your savings!</h1>
-    <h2>You saved £84 this month.</h2>
+    <h2>You saved &pound;10 this month.</h2>
     <h2>How do you want to distribute it?</h2>
 
     <div class="row">
@@ -12,9 +12,9 @@
         <div class="col-2">Charity</div>
     </div>
     <div class="row">
-        <div class="col-2"><span class="js--saving-amount">63</span></div>
+        <div class="col-2"><span class="js--saving-amount">&pound;7.50</span></div>
         <div class="col-8"></div>
-        <div class="col-2"><span class="js--charity-amount">21</span></div>
+        <div class="col-2"><span class="js--charity-amount">&pound;2.50</span></div>
     </div>
 
     <h2>Where do you want it to go?</h2>
@@ -40,5 +40,8 @@
             </div>
         </div>
     </div>
+    <form action="/thank-you" class="thank-you">
+        <button class="btn btn-light w-100">Distribute it! <i class="fas fas-chevron-right"></i></button>
+    </form>
 </div>
 {% endblock %}
