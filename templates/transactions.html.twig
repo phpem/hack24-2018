@@ -19,7 +19,7 @@
                         </th>
                     <td>{{ transaction.counterParty }}</td>
                     <td>£{{ transaction.amount }}</td>
-                    <td>{{ transaction.timestamp.format('Y-m-d') }}</td>
+                    <td>{{ transaction.timestamp | ago }}</td>
                 </tr>
             {% endfor %}
         </table>

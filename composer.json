@@ -4,6 +4,7 @@
     "require": {
         "php": "^7.1.3",
         "ext-iconv": "*",
+        "knplabs/knp-time-bundle": "^1.8",
         "moneymeg/starling-php-sdk": "^1.0",
         "ramsey/uuid": "^3.7",
         "ramsey/uuid-doctrine": "^1.4",
