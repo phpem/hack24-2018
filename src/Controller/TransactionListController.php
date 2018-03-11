@@ -25,22 +25,24 @@ class TransactionListController extends Controller
         $transactions  = $this->repository->findAll();
 
         /*
+        $locations = [];
+        $merchants = [];
+
         foreach ($transactions as $transaction) {
             $rawPayload = $transaction->getRawPayload();
-            dump($rawPayload);
             if (array_key_exists('merchantUid', $rawPayload)) {
-                $merchant = $this->starling->getMerchant($rawPayload['merchantUid']);
-                dump($merchant);
+                $merchants[$rawPayload['merchantUid']] = $this->starling->getMerchant($rawPayload['merchantUid']);
             }
             if (array_key_exists('merchantLocationUid', $rawPayload)) {
-                $location = $this->starling->getMerchantLocation($rawPayload['merchantUid'], $rawPayload['merchantLocationUid']);
-                dump($location);
+                $locations[$rawPayload['merchantUid']] = $this->starling->getMerchantLocation($rawPayload['merchantUid'], $rawPayload['merchantLocationUid']);
             }
         }
         */
 
         return $this->render('transactions.html.twig', [
             'transactions' => $transactions,
+         //   'locations'    => $locations,
+         //   'merchants'    => $merchants,
         ]);
     }
 }
