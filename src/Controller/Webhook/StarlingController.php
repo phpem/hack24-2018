@@ -64,6 +64,7 @@ class StarlingController
 
             $transaction = Transaction::fromStarling($customer, $content);
 
+            // check to see if it's either outgoing, or if we've already received it
             if ( ! $transaction->isOutgoing() || $this->transactionRepository->find($transaction->id()) instanceof Transaction) {
                 return new JsonResponse([], Response::HTTP_ACCEPTED);
             }

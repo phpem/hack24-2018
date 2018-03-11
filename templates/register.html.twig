@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container register-page">
+        <div class="row justify-content-md-center">
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <h2>Setup your account</h2>
+                <form action="{{ path('complete') }}" method="POST">
+                    <label for="monthly-limit">Monthly limit</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">&pound;</span>
+                        </div>
+                        <input type="text" class="form-control" name="monthly-limit" id="monthly-limit"
+                               aria-label="Monthly limit">
+                    </div>
+                    <div class="form-group">
+                            <input type="checkbox" id="round-up-on-even-pound" name="round-up-on-even-pound">
+                        <label class="checkbox-label" for="round-up-on-even-pound">
+                            If an even transaction is made,<br> add an additional £1
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-light w-100">Setup my account <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

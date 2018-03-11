@@ -13,3 +13,11 @@ index:
 transaction.list:
     path: /transactions
     controller: App\Controller\TransactionListController
+
+register:
+    path: /register
+    controller: App\Controller\RegisterController
+
+complete:
+    path: /complete
+    controller: App\Controller\CompleteController
