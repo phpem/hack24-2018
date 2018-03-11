@@ -53,4 +53,13 @@ class RoundUpRepository extends ServiceEntityRepository
         return $query->getSingleScalarResult();
     }
 
+    /**
+     * @return RoundUp[]
+     */
+    public function getList()
+    {
+        return $this->createQueryBuilder('r')
+            ->join('r.transaction', 't')
+            ->orderBy('t.transactionDate', 'DESC')->getQuery()->getResult();
+    }
 }

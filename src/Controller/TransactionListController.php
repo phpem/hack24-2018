@@ -25,7 +25,7 @@ class TransactionListController extends Controller
 
     public function __invoke()
     {
-        $roundUps  = $this->repository->findAll();
+        $roundUps  = $this->repository->getList();
         $icons = new Icons();
         $transactions = [];
 
