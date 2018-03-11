@@ -24,7 +24,7 @@ class SendSavedNotificationListener
         $message->setRecipient((string)$event->getRoundUp()->transaction()->customer()->deviceId());
         $message->setData([
             'notification_type' => 'savings',
-            'round_up' => $event->getRoundUp()->value(),
+            'round_up' => $event->getRoundUp()->value()->value(),
             'merchant' => 'DoughNotts'
         ]);
         $message->setHighPriority();
