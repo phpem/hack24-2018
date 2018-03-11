@@ -9,17 +9,19 @@
                 <th scope="col"></th>
                 <th>Vendor</th>
                 <th scope="col">Amount</th>
+                <th scope="col">Saved</th>
                 <th scope="col">Date</th>
             </tr>
             </thead>
             {% for transaction in transactions %}
                 <tr>
                     <th scope="row">
-                        <img class="merchant--small" src="{{ icons.get(transaction.rawPayload.merchantUid) }}">
+                        <img class="merchant--small" src="{{ transaction.icon }}">
                         </th>
-                    <td>{{ transaction.rawPayload.content.counterParty }}</td>
-                    <td>{{ transaction.amount.value }} {{ transaction.amount.currency }}</td>
-                    <td>{{ transaction.transactionDate.format('Y-m-d') }}</td>
+                    <td>{{ transaction.counterParty }}</td>
+                    <td>{{ transaction.amount }} {{ transaction.currency }}</td>
+                    <td>{{ transaction.roundUp }} {{ transaction.currency }}</td>
+                    <td>{{ transaction.timestamp.format('Y-m-d') }}</td>
                 </tr>
             {% endfor %}
         </table>

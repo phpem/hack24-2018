@@ -2,20 +2,22 @@
 
 namespace App\Controller;
 
+use App\Entity\RoundUp;
 use App\Icons;
-use App\Repository\TransactionRepository;
+use App\Repository\RoundUpRepository;
 use App\Starling;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class TransactionListController extends Controller
 {
 
-    /** @var TransactionRepository */
+    /** @var RoundUpRepository */
     private $repository;
+
     /** @var Starling */
     private $starling;
 
-    public function __construct(Starling $starling, TransactionRepository $repository)
+    public function __construct(Starling $starling, RoundUpRepository $repository)
     {
         $this->repository = $repository;
         $this->starling = $starling;
@@ -23,8 +25,23 @@ class TransactionListController extends Controller
 
     public function __invoke()
     {
-        $transactions  = $this->repository->findAll();
+        $roundUps  = $this->repository->findAll();
         $icons = new Icons();
+        $transactions = [];
+
+        /** @var RoundUp $roundUp */
+        foreach ($roundUps as $roundUp) {
+            $transaction = $roundUp->transaction();
+            $rawPayload = $transaction->getRawPayload();
+            $transactions[] = [
+                'icon' => $icons->get($rawPayload['merchantUid']),
+                'counterParty' => $rawPayload['content']['counterParty'],
+                'amount' => $transaction->amount()->value(),
+                'currency' => $transaction->amount()->currency(),
+                'roundUp' => $roundUp->value()->value(),
+                'timestamp' => $transaction->getTransactionDate()
+            ];
+        }
 
         /*
         $locations = [];
@@ -42,10 +59,7 @@ class TransactionListController extends Controller
         */
 
         return $this->render('transactions.html.twig', [
-            'transactions' => $transactions,
-            'icons' => $icons,
-         //   'locations'    => $locations,
-         //   'merchants'    => $merchants,
+            'transactions' => $transactions
         ]);
     }
 }
