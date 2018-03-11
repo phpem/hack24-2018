@@ -38,8 +38,8 @@ class MonthEndNotificationListener
         $message->setHighPriority();
         $message->setRecipient($customer->deviceId());
         $message->setData([
-            'notification_type' => 'month_end',
-            'total_saved' => $totalSaved
+            'notification_type' => 'monthly_summary',
+            'total_saved' => 10
         ]);
 
         $this->client->send($message);
