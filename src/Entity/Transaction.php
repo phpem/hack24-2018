@@ -89,4 +89,9 @@ class Transaction
     {
         return $this->customer;
     }
+
+    public function getTransactionDate(): \DateTime
+    {
+        return $this->transactionDate;
+    }
 }

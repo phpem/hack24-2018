@@ -9,3 +9,7 @@ oauth.redirect:
 index:
     path: /
     controller: App\Controller\HomeController
+
+transaction.list:
+    path: /transactions
+    controller: App\Controller\TransactionListController

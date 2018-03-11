@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h2>Transactions</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date</th>
+            </tr>
+            </thead>
+            {% for transaction in transactions %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ transaction.amount.value }} {{ transaction.amount.currency }}</td>
+                    <td>{{ transaction.transactionDate.format('Y-m-d') }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
