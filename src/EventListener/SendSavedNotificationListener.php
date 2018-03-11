@@ -25,7 +25,7 @@ class SendSavedNotificationListener
         $message->setData([
             'notification_type' => 'savings',
             'round_up' => $event->getRoundUp()->value()->value(),
-            'merchant' => $this->getMerchant($event->getRoundUp()->transaction()->rawPayload())
+            'merchant' => $this->getMerchant($event->getRoundUp()->transaction()->getRawPayload())
         ]);
         $message->setHighPriority();
 
