@@ -6,7 +6,7 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col"></th>
                 <th>Vendor</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Date</th>
@@ -14,7 +14,9 @@
             </thead>
             {% for transaction in transactions %}
                 <tr>
-                    <th scope="row">{{ loop.index }}</th>
+                    <th scope="row">
+                        <img class="merchant--small" src="{{ icons.get(transaction.rawPayload.merchantUid) }}">
+                        </th>
                     <td>{{ transaction.rawPayload.content.counterParty }}</td>
                     <td>{{ transaction.amount.value }} {{ transaction.amount.currency }}</td>
                     <td>{{ transaction.transactionDate.format('Y-m-d') }}</td>

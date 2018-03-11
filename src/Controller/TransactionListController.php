@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Icons;
 use App\Repository\TransactionRepository;
 use App\Starling;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -23,6 +24,7 @@ class TransactionListController extends Controller
     public function __invoke()
     {
         $transactions  = $this->repository->findAll();
+        $icons = new Icons();
 
         /*
         $locations = [];
@@ -41,6 +43,7 @@ class TransactionListController extends Controller
 
         return $this->render('transactions.html.twig', [
             'transactions' => $transactions,
+            'icons' => $icons,
          //   'locations'    => $locations,
          //   'merchants'    => $merchants,
         ]);
