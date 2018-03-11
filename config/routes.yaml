@@ -29,3 +29,7 @@ overview:
 distribute:
     path: /distribute
     controller: App\Controller\DistributeController
+
+thank-you:
+    path: /thank-you
+    controller: App\Controller\ThankYouController
