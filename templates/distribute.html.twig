@@ -1,20 +1,42 @@
 {% extends 'base.html.twig' %}
 
+{% block lowerScripts %}
+    <script>
+        $(document).ready(function() {
+            var distribution = $("input[name=distribution]");
+
+            distribution.on('change', function() {
+                var amount = 10;
+                var percentage = $(this).val() / 100;
+                var savingsAmount = (amount * percentage).toFixed(2);
+                var charityAmount = (amount - savingsAmount).toFixed(2);
+                document.getElementById('jssavingamount').innerText = '£' + savingsAmount;
+                document.getElementById('jscharityamount').innerText = '£' + charityAmount;
+
+                console.log(savingsAmount);
+                console.log(charityAmount);
+
+            });
+        });
+    </script>
+{% endblock %}
+
 {% block body %}
 <div class="container">
     <h1>Time to distribute your savings!</h1>
-    <h2>You saved &pound;10 this month.</h2>
-    <h2>How do you want to distribute it?</h2>
+    <hr>
+    <h3>You saved &pound;10 this month.</h3>
+    <p>How do you want to distribute it?</p>
 
     <div class="row">
         <div class="col-2">Savings</div>
-        <div class="col-8"><input type="range" min="0" max="100" value="75"></div>
+        <div class="col-8"><input type="range" min="0" max="100" value="75" name="distribution"></div>
         <div class="col-2">Charity</div>
     </div>
     <div class="row">
-        <div class="col-2"><span class="js--saving-amount">&pound;7.50</span></div>
+        <div class="col-2"><span class="js--saving-amount" id="jssavingamount">&pound;7.50</span></div>
         <div class="col-8"></div>
-        <div class="col-2"><span class="js--charity-amount">&pound;2.50</span></div>
+        <div class="col-2"><span class="js--charity-amount" id="jscharityamount">&pound;2.50</span></div>
     </div>
 
     <h2>Where do you want it to go?</h2>
