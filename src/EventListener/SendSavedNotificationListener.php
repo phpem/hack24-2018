@@ -25,10 +25,15 @@ class SendSavedNotificationListener
         $message->setData([
             'notification_type' => 'savings',
             'round_up' => $event->getRoundUp()->value()->value(),
-            'merchant' => 'DoughNotts'
+            'merchant' => $this->getMerchant($event->getRoundUp()->transaction()->rawPayload())
         ]);
         $message->setHighPriority();
 
         $this->client->send($message);
+    }
+
+    protected function getMerchant(array $payload)
+    {
+        return $payload['content']['counterParty'];
     }
 }
