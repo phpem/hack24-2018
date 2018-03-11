@@ -7,33 +7,38 @@
     <h2>How do you want to distribute it?</h2>
 
     <div class="row">
-        <div class="col-1">Savings</div>
-        <div class="col-2"><input type="range" min="0" max="100" value="75"></div>
-        <div class="col-1">Charity</div>
+        <div class="col-2">Savings</div>
+        <div class="col-8"><input type="range" min="0" max="100" value="75"></div>
+        <div class="col-2">Charity</div>
     </div>
     <div class="row">
-        <div class="col-1"><span class="js--saving-amount">63</span></div>
-        <div class="col-2"></div>
-        <div class="col-1"><span class="js--charity-amount">21</span></div>
+        <div class="col-2"><span class="js--saving-amount">63</span></div>
+        <div class="col-8"></div>
+        <div class="col-2"><span class="js--charity-amount">21</span></div>
     </div>
 
     <h2>Where do you want it to go?</h2>
-    <h3>Your local Charities (Nottingham)</h3>
     <div class="card">
-
-    </div>
-    <div class="row">
-        <img class="charity-logo rounded-circle" src="{{ asset('img/charity/ArthritisResearch logo.jpg') }}" />
-        <img class="charity-logo rounded-circle" src="{{ asset('img/charity/mha.jpg') }}" />
-        <img class="charity-logo rounded-circle" src="{{ asset('img/charity/mha.jpg') }}" />
-    </div>
-    <h3>National</h3>
-    <div class="row">
-            <img class="charity-logo rounded-circle" src="{{ asset('img/charity/02_Wildlife_Trusts.jpg') }}" />
-
-            <img class="charity-logo rounded-circle" src="{{ asset('img/charity/ArthritisResearch logo.jpg') }}" />
-
+        <div class="card-body">
+            <h5 class="card-title">Your local Charities (Nottingham)</h5>
+            <h6 class="card-subtitle mb-2 text-muted">These are charities selected based on locations and
+                businesses from your transaction history this month.</h6>
+            <div class="row">
+                <img class="charity-logo rounded-circle" src="{{ asset('img/charity/ArthritisResearch logo.jpg') }}" />
                 <img class="charity-logo rounded-circle" src="{{ asset('img/charity/mha.jpg') }}" />
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">National</h5>
+            <h6 class="card-subtitle mb-2 text-muted">These are charities selected based on the types of places you
+                like to shop.
+                .</h6>
+            <div class="row">
+                <img class="charity-logo rounded-circle" src="{{ asset('img/charity/02_Wildlife_Trusts.jpg') }}" />
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
