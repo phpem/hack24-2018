@@ -1,5 +1,5 @@
-transaction.webhook:
-    path: /webhook/transaction
+transaction.webhook.starling:
+    path: /webhook/starling/transaction
     controller: App\Controller\Webhook\StarlingController
     methods: [POST]
 

@@ -30,12 +30,24 @@ services:
         tags:
             - { name: kernel.event_listener, event: transaction.created }
 
+    App\EventListener\AddToStarlingGoalListener:
+        arguments:
+            - '@App\Starling'
+        tags:
+            - { name: kernel.event_listener, event: roundup.calculated }
+
+    App\Starling:
+        arguments:
+            - '@GuzzleHttp\Client'
+            - '%env(ACCESS_TOKEN)%'
+            - '%env(SAVINGS_GOAL)%'
+
     App\EventListener\SendSavedNotificationListener:
         tags:
             - { name: kernel.event_listener, event: roundup.calculated }
 
     GuzzleHttp\Client:
-            class: GuzzleHttp\Client
+        class: GuzzleHttp\Client
 
     sngrl\PhpFirebaseCloudMessaging\Client:
         class: sngrl\PhpFirebaseCloudMessaging\Client

@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Customer;
 use App\Entity\RoundUp;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -23,5 +24,26 @@ class RoundUpRepository extends ServiceEntityRepository
     {
         $this->_em->persist($roundup);
         $this->_em->flush();
+    }
+
+    public function getMonthlyTotalForCustomer(Customer $customer)
+    {
+        /*
+         *
+            SELECT SUM(value_value)
+
+            FROM round_up as r
+
+            INNER JOIN transaction as t
+            ON r.transaction_id = t.id
+
+            INNER JOIN customer as c
+            ON t.customer_id = c.id
+
+            WHERE t.transaction_date >= '2018-03-10 00:00:00'
+
+            GROUP BY c.id
+            ;
+         */
     }
 }

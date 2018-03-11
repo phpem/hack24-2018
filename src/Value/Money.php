@@ -24,7 +24,7 @@ final class Money
 
     public function __construct(string $currency, $amount)
     {
-        $this->value = (string) $amount;
+        $this->value = round((float) $amount, 2);
         $this->currency = $currency;
     }
 
