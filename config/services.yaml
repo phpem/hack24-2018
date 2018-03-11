@@ -60,7 +60,3 @@ services:
                   - '@GuzzleHttp\Client'
 
     App\Notifications\Client: '@App\Notifications\Client\FirebaseClient'
-
-    App\Client\StarlingClient:
-        arguments:
-          - '%env(STARLING_ACCESS_TOKEN)%'
