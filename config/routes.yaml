@@ -25,3 +25,7 @@ complete:
 overview:
     path: /overview
     controller: App\Controller\OverviewController
+
+distribute:
+    path: /distribute
+    controller: App\Controller\DistributeController

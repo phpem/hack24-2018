@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <h1>Time to distribute your savings!</h1>
+    <h2>You saved £84 this month.</h2>
+    <h2>How do you want to distribute it?</h2>
+
+    <div class="row">
+        <div class="col-1">Savings</div>
+        <div class="col-2"><input type="range" min="0" max="100" value="75"></div>
+        <div class="col-1">Charity</div>
+    </div>
+    <div class="row">
+        <div class="col-1"><span class="js--saving-amount">63</span></div>
+        <div class="col-2"></div>
+        <div class="col-1"><span class="js--charity-amount">21</span></div>
+    </div>
+</div>
+{% endblock %}
