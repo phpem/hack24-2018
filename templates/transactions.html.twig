@@ -9,7 +9,6 @@
                 <th scope="col"></th>
                 <th>Vendor</th>
                 <th scope="col">Amount</th>
-                <th scope="col">Saved</th>
                 <th scope="col">Date</th>
             </tr>
             </thead>
@@ -19,8 +18,7 @@
                         <img class="merchant--small" src="{{ transaction.icon }}">
                         </th>
                     <td>{{ transaction.counterParty }}</td>
-                    <td>{{ transaction.amount }} {{ transaction.currency }}</td>
-                    <td>{{ transaction.roundUp }} {{ transaction.currency }}</td>
+                    <td>£{{ transaction.amount }}</td>
                     <td>{{ transaction.timestamp.format('Y-m-d') }}</td>
                 </tr>
             {% endfor %}

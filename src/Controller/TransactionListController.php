@@ -36,9 +36,7 @@ class TransactionListController extends Controller
             $transactions[] = [
                 'icon' => $icons->get($rawPayload['merchantUid']),
                 'counterParty' => $rawPayload['content']['counterParty'],
-                'amount' => $transaction->amount()->value(),
-                'currency' => $transaction->amount()->currency(),
-                'roundUp' => $roundUp->value()->value(),
+                'amount' => round($roundUp->value()->value(), 2),
                 'timestamp' => $transaction->getTransactionDate()
             ];
         }
