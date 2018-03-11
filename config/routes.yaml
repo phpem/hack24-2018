@@ -21,3 +21,7 @@ register:
 complete:
     path: /complete
     controller: App\Controller\CompleteController
+
+overview:
+    path: /overview
+    controller: App\Controller\OverviewController

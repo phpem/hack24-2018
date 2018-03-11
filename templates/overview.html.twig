@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h2>End of Month Overview</h2>
+
+        <div>
+            <p>Total contribution: £{{ monthlyContribution }}</p>
+            <p>Chosen charity: {{ chosenCharity }}</p>
+        </div>
+    </div>
+{% endblock %}
