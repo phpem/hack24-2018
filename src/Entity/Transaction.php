@@ -95,12 +95,10 @@ class Transaction
         return $this->transactionDate;
     }
 
-    /**
-     * @return array
-     */
-    public function rawPayload(): array
+    public function getRawPayload(): array
     {
+        // ¯\_(ツ)_/¯
         return json_decode($this->rawPayload, true);
-    }
 
+    }
 }

@@ -18,8 +18,10 @@ class TransactionListController extends Controller
 
     public function __invoke()
     {
+        $transactions  = $this->repository->findAll();
+
         return $this->render('transactions.html.twig', [
-            'transactions' => $this->repository->findAll(),
+            'transactions' => $transactions,
         ]);
     }
 }
