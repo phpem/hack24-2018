@@ -2,9 +2,9 @@
 
 namespace App\Repository;
 
-use App\Entity\Customer;
 use App\Entity\RoundUp;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -26,24 +26,31 @@ class RoundUpRepository extends ServiceEntityRepository
         $this->_em->flush();
     }
 
-    public function getMonthlyTotalForCustomer(Customer $customer)
+    public function calculateMonthEnd(string $customerID, $start, $end)
     {
-        /*
-         *
-            SELECT SUM(value_value)
 
-            FROM round_up as r
+        $rsm = new ResultSetMapping();
+        $rsm->addScalarResult('total', 'total');
 
-            INNER JOIN transaction as t
-            ON r.transaction_id = t.id
+        $query = $this->_em->createNativeQuery("
+          SELECT SUM(value_value) as total
+          FROM round_up as r
+          INNER JOIN transaction as t
+          ON r.transaction_id = t.id
+          INNER JOIN customer as c
+          ON t.customer_id = c.id
+          WHERE t.transaction_date >= :startDate
+          AND t.transaction_date <= :endDate
+          AND c.id = :customerID;",
+        $rsm);
 
-            INNER JOIN customer as c
-            ON t.customer_id = c.id
+        $query->setParameters([
+            'startDate' => $start,
+            'endDate' => $end,
+            'customerID' => $customerID
+        ]);
 
-            WHERE t.transaction_date >= '2018-03-10 00:00:00'
-
-            GROUP BY c.id
-            ;
-         */
+        return $query->getSingleScalarResult();
     }
+
 }

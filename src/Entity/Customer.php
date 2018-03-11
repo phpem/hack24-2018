@@ -44,4 +44,12 @@ class Customer
     {
         return $this->deviceId;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

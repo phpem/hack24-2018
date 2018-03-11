@@ -46,6 +46,10 @@ services:
         tags:
             - { name: kernel.event_listener, event: roundup.calculated }
 
+    App\EventListener\MonthEndNotificationListener:
+        tags:
+          - { name: kernel.event_listener, event: month.ended }
+
     GuzzleHttp\Client:
         class: GuzzleHttp\Client
 
