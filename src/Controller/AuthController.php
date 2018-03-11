@@ -3,25 +3,26 @@
 namespace App\Controller;
 
 use App\Client\StarlingClient;
+use App\Starling;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class AuthController extends Controller
 {
-    /** @var StarlingClient */
-    private $client;
+    /** @var Starling */
+    private $starling;
 
-    public function __construct(StarlingClient $client)
+    public function __construct( Starling $starling)
     {
-        $this->client = $client;
+        $this->starling = $starling;
     }
 
     public function __invoke(Request $request): JsonResponse
     {
         return new JsonResponse([
-            'balance' => $this->client->getBalance(),
-            'transactions' => $this->client->getCardTransactions(),
+            'balance' => $this->starling->getBalance(),
+            'transactions' => $this->starling->getCardTransactions(),
         ]);
     }
 }

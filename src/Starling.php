@@ -31,7 +31,7 @@ class Starling
         $this->savingsGoal = $savingsGoal;
     }
 
-    public function addToSavingsGoal(Money $amount)
+    public function addToSavingsGoal(Money $amount): void
     {
         $transferId = (string) Uuid::uuid4();
         $this->client->put(
@@ -49,5 +49,47 @@ class Starling
                 ],
             ]
         );
+    }
+
+    public function getBalance()
+    {
+        $response = $this->client->get(
+            'https://api-sandbox.starlingbank.com/api/v1/accounts/balance',
+            [
+                'headers' => [
+                    'Authorization' => "Bearer {$this->accessToken}",
+                    'Content-Type' => 'application/json'
+                ],
+            ]
+        );
+
+        $content = $response->getBody()->getContents();
+
+        $content = json_decode($content, true);
+
+        return $content['effectiveBalance'];
+    }
+
+    public function getCardTransactions(): array
+    {
+        $response = $this->client->get(
+            'https://api-sandbox.starlingbank.com/api/v1/transactions/mastercard',
+            [
+                'headers' => [
+                    'Authorization' => "Bearer {$this->accessToken}",
+                    'Content-Type' => 'application/json'
+                ],
+            ]
+        );
+
+        $content = $response->getBody()->getContents();
+
+        $content = json_decode($content, true);
+
+        return array_map(function($transaction){
+            unset($transaction['_links']);
+            return $transaction;
+
+        }, $content['_embedded']['transactions']);
     }
 }
