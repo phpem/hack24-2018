@@ -51,6 +51,40 @@ class Starling
         );
     }
 
+    public function createSavingsGoal(string $uuid, string $name, string $currency): void
+    {
+        $this->client->put(
+            "https://api-sandbox.starlingbank.com/api/v1/savings-goals/{$uuid}",
+            [
+                'headers' => [
+                    'Authorization' => "Bearer {$this->accessToken}",
+                    'Content-Type' => 'application/json'
+                ],
+                RequestOptions::JSON => [
+                    'name' => $name,
+                    'currency' => $currency,
+                ],
+            ]
+        );
+    }
+
+    public function getSavingsGoal(string $uuid)
+    {
+        $response = $this->client->get(
+            "https://api-sandbox.starlingbank.com/api/v1/savings-goals/{$uuid}",
+            [
+                'headers' => [
+                    'Authorization' => "Bearer {$this->accessToken}",
+                    'Content-Type' => 'application/json'
+                ]
+            ]
+        );
+
+        $content = $response->getBody()->getContents();
+
+        return json_decode($content, true);
+    }
+
     public function getBalance()
     {
         $response = $this->client->get(
