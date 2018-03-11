@@ -92,4 +92,38 @@ class Starling
 
         }, $content['_embedded']['transactions']);
     }
+
+    public function getMerchant(string $merchantId): array
+    {
+        $response = $this->client->get(
+            "https://api-sandbox.starlingbank.com/api/v1/merchants/{$merchantId}",
+            [
+                'headers' => [
+                    'Authorization' => "Bearer {$this->accessToken}",
+                    'Content-Type' => 'application/json'
+                ],
+            ]
+        );
+
+        $content = $response->getBody()->getContents();
+
+        return json_decode($content, true);
+    }
+
+    public function getMerchantLocation(string $merchantId, string $locationId): array
+    {
+        $response = $this->client->get(
+            "https://api-sandbox.starlingbank.com/api/v1/merchants/{$merchantId}/locations/{$locationId}",
+            [
+                'headers' => [
+                    'Authorization' => "Bearer {$this->accessToken}",
+                    'Content-Type' => 'application/json'
+                ],
+            ]
+        );
+
+        $content = $response->getBody()->getContents();
+
+        return json_decode($content, true);
+    }
 }
