@@ -33,3 +33,7 @@ distribute:
 thank-you:
     path: /thank-you
     controller: App\Controller\ThankYouController
+
+monthEnd:
+    path: /month-end
+    controller: App\Controller\MonthEndController

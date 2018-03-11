@@ -24,4 +24,12 @@ class TransactionRepository extends ServiceEntityRepository
         $this->_em->persist($transaction);
         $this->_em->flush();
     }
+
+    /**
+     * @return Transaction[]
+     */
+    public function getList()
+    {
+        return $this->createQueryBuilder('t')->orderBy('t.transactionDate', 'DESC')->getQuery()->getResult();
+    }
 }
